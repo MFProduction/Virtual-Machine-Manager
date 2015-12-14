@@ -33,7 +33,7 @@ group :development do
 
 
 group :test do
-  #gem 'minitest'
-  #gem 'shoulda-matchers', '2.5.0'
+  gem 'minitest'
+  gem 'shoulda-matchers', '2.5.0'
 end
 end
