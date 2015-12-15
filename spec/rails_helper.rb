@@ -20,12 +20,12 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.before(:suite) do
-    Fog.mock!
-    Fog::Mock.reset
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
   config.before(:each) do
+    Fog.mock!
+    Fog::Mock.reset
     DatabaseCleaner.start
   end
   config.before(:each) do
