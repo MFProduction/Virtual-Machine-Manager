@@ -9,10 +9,27 @@
 </head>
 <body>
   <%= render "layouts/navigation" %>
-<div class="ui grid container">
+
+ 
+<div class="ui grid container main-container">
   <%= render 'layouts/messages' %>
   <%= yield %>
   <%= render 'layouts/footer' %>
 </div>
+
+<script>
+   $(document).ready(function(){
+    $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+
+}); 
+   
+</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 class VirtualMachinesController < ApplicationController
   def index
     @vms = VirtualMachine.all
+    flash[:negative] = "Hello my friend"
   end
 
   def show
