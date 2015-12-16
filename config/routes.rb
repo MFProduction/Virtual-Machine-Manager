@@ -1,6 +1,8 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
 
-  resources :virtual_machines, only: [:index, :show]
-  root 'virtual_machines#index'
- 
+  resources :instances, only: [:index, :show, :new, :create]
+  root 'instances#index'
+  mount Sidekiq::Web, at: '/sidekiq' 
 end

@@ -16,11 +16,14 @@ ActiveRecord::Schema.define(version: 20151214142909) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "virtual_machines", force: :cascade do |t|
+  create_table "instances", force: :cascade do |t|
     t.string   "instance_id"
-    t.string   "instance_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "name"
+    t.string   "type"
+    t.string   "public_ip"
+    t.string   "availability_zone"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end

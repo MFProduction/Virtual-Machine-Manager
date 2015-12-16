@@ -1,0 +1,14 @@
+
+  <div class="ui container ">
+    <h1 class="ui center aligned attached header ">Create new Virtual Machine</h1>
+    <div class="ui segment attached">
+      <%= render "layouts/errors", obj: @instance %>
+      <%= form_for (@instance), html: { class: "ui form"}  do |f| %>
+        <div class="field">
+          <%= f.label :name  %>
+          <%= f.text_field :name  %>
+        </div>
+        <%= f.submit(@instance.new_record? ? "Create" : "Edit", class:"ui green button")  %>
+      <% end  %>
+      </div>
+</div>
