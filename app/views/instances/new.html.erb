@@ -1,4 +1,3 @@
-
   <div class="ui container ">
     <h1 class="ui center aligned attached header ">Create new Virtual Machine</h1>
     <div class="ui segment attached">
@@ -7,6 +6,9 @@
         <div class="field">
           <%= f.label :name  %>
           <%= f.text_field :name  %>
+          <div class="field">
+          <%= f.label "Preset"  %>
+          <%= collection_select(:instance, :preset_id, Preset.all, :id, :name) %>
         </div>
         <%= f.submit(@instance.new_record? ? "Create" : "Edit", class:"ui green button")  %>
       <% end  %>

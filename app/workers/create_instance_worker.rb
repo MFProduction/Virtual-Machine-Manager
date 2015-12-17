@@ -2,9 +2,10 @@ class CreateInstanceWorker
   include Sidekiq::Worker
   #sidekiq_options queue: "instance"
   sidekiq_options retry: false
-  def perform(name)
+  def perform(name, preset_id)
+    preset = Preset.find(preset_id)
     logger.info "Creating new instance: #{name}" 
-    server = Fog::Compute[:aws].servers.create(image_id: "ami-f0091d91", flavor_id:"t2.micro")
+    server = Fog::Compute[:aws].servers.create(image_id: preset.image_id, flavor_id: preset.flavor_id)
     server.wait_for { ready? }
     logger.info "#{name} instance is ready" 
     
