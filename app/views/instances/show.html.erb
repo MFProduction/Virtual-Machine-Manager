@@ -2,6 +2,9 @@
   <h1 class="ui center aligned header"><%= @instance.name %></h1>
 
 <h2>id: <%= @instance.instance_id %></h2>
-<%= @vm.state %>
+<%= @server.state %>
 <%= @instance.public_ip %>
+<%= @instance.availability_zone %>
+<%= @instance.flavor %>
+<%= @instance.dns_name %>
 </div>

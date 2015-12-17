@@ -11,13 +11,14 @@ class CreateInstanceWorker
     logger.info "Creating db entry for: #{name}" 
     instance = Instance.new(name: name)  
     instance.instance_id = server.id
-    #instance.type = server.flavor_id
+    instance.flavor = server.flavor_id
     instance.public_ip = server.public_ip_address
-    #instance.availability_zone = server.availability_zone
+    instance.availability_zone = server.availability_zone
+    instance.dns_name = server.dns_name
     if instance.save    
-      logger.info "Jon for #{name} done." 
+      logger.info "Job for #{name} done."
     else
-      logger.info "Error in database for #{name}. destroying server"
+      logger.info "Error in database for #{name}. Destroying server"
       server.destroy
     end
   end

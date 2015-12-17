@@ -5,7 +5,7 @@ class InstancesController < ApplicationController
 
   def show
     @instance = Instance.find(params[:id])
-    @vm = VirtualMachineService.get(@instance.instance_id)
+    @server = IstanceService.get(@instance.instance_id)
   end
 
   def new
@@ -14,16 +14,11 @@ class InstancesController < ApplicationController
 
   def create
     #binding.pry
-    #@instance = Instance.create(instance_params.merge(:instance_id => "ididid"))
     @instance = Instance.new(instance_params)    
     if @instance.valid?
-
-         #server = Fog::Compute[:aws].servers.create(image_id: "ami-f0091d91", name: params[:name], flavor_id:"t2.micro")
-         #server.wait_for { ready? }
-         #@instance.instance_id = server.id
-         #@instance.save   
-      CreateInstanceWorker.perform_async(params[:instance][:name])
-      flash[:positive] = "Instance has been created (waiting for server to respond) #{params[:instance][:name]}"
+      name = params[:instance][:name]
+      CreateInstanceWorker.perform_async(name, )
+      flash[:positive] = "Instance for #{name} is being processed."
       redirect_to instances_path
 
     else

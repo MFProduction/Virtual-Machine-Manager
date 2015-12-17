@@ -17,11 +17,17 @@ ActiveRecord::Schema.define(version: 20151214142909) do
   enable_extension "plpgsql"
 
   create_table "instances", force: :cascade do |t|
-    t.string   "instance_id"
     t.string   "name"
-    t.string   "type"
+    t.string   "company"
+    t.text     "description"
+    t.string   "instance_id"
+    t.string   "flavor_id"
+    t.string   "image_id"
+    t.string   "private_ip"
     t.string   "public_ip"
     t.string   "availability_zone"
+    t.string   "private_dns_name"
+    t.string   "dns_name"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
