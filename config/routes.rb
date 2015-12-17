@@ -1,14 +1,12 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  get 'presets/index'
-
-  get 'presets/new'
-
-  get 'presets/create'
-
   root 'instances#index'
-  resources :instances, only: [:index, :show, :new, :create]
+  resources :instances, only: [:index, :show, :new, :create] do
+    member do
+      post 'action'
+    end
+  end
   resources :presets, only: [:index, :new, :create]
 
 

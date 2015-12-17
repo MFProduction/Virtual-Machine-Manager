@@ -7,4 +7,10 @@
 <%= @instance.availability_zone %>
 <%= @instance.flavor_id %>
 <%= @instance.dns_name %>
-</div>
+<% if %w(running pending).include? @server.state  %>
+<%= link_to "Stop instance", action_instance_path(@instance, instance_action: "stop"), method: :post %>
+<% else %>
+  <%= link_to "Start instance", action_instance_path(@instance, instance_action: "start"), method: :post %>
+<% end %>
+
+

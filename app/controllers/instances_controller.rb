@@ -4,6 +4,7 @@ class InstancesController < ApplicationController
   end
 
   def show
+    #binding.pry
     @instance = Instance.find(params[:id])
     @server = InstanceService.get(@instance.id)
   end
@@ -28,6 +29,20 @@ class InstancesController < ApplicationController
 
     else
       render :new
+    end
+  end
+
+  def action
+    instance = Instance.find(params[:id])
+    action = params[:instance_action]
+    if action == "start"  
+      flash[:positive] = "#{instance.name} is starting"
+      InstanceService.start(instance.id)
+      redirect_to :back
+    else
+      InstanceService.stop(instance.id)
+      flash[:negative] = "#{instance.name} is stoping"
+      redirect_to :back
     end
   end
 
