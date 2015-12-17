@@ -5,7 +5,7 @@ class InstancesController < ApplicationController
 
   def show
     @instance = Instance.find(params[:id])
-    @server = IstanceService.get(@instance.instance_id)
+    @server = InstanceService.get(@instance.id)
   end
 
   def new
@@ -17,8 +17,8 @@ class InstancesController < ApplicationController
     @instance = Instance.new(instance_params)    
     if @instance.valid?
       name = params[:instance][:name]
-      CreateInstanceWorker.perform_async(name, )
-      flash[:positive] = "Instance for #{name} is being processed."
+      CreateInstanceWorker.perform_async(name)
+      flash[:positive] = "#{name} is being processed"
       redirect_to instances_path
 
     else

@@ -11,10 +11,14 @@ class CreateInstanceWorker
     logger.info "Creating db entry for: #{name}" 
     instance = Instance.new(name: name)  
     instance.instance_id = server.id
-    instance.flavor = server.flavor_id
+    instance.image_id = server.image_id
+    instance.flavor_id = server.flavor_id
+    instance.private_ip = server.private_ip_address
     instance.public_ip = server.public_ip_address
     instance.availability_zone = server.availability_zone
     instance.dns_name = server.dns_name
+    instance.private_dns_name = server.private_dns_name
+
     if instance.save    
       logger.info "Job for #{name} done."
     else
