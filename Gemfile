@@ -17,6 +17,8 @@ gem 'slim'
 
 
 group :development, :test do
+  gem 'rerun'
+  gem 'pry'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'database_cleaner'

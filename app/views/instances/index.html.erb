@@ -1,9 +1,9 @@
 <h1 class="ui center aligned attached header">Virtual Machines</h1>
 <div class="ui attached segment">
 <%= link_to("New instance", new_instance_path , class:"ui green button") %>
-<% @vms.each do |vm| %>
+<% @instances.each do |instance| %>
   <div class="ui segment  container">
-  <h2><%= link_to(vm.name, instance_path(vm.id))%></h2>
+  <h2><%= link_to(instance.name, instance_path(instance.id))%></h2>
   </div>
 <% end %>
 

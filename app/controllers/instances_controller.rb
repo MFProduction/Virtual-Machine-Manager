@@ -1,12 +1,11 @@
 class InstancesController < ApplicationController
   def index
-    @vms = Instance.all
-    ShowInstanceWorker.perform_async("bob")
+    @instances = Instance.all
   end
 
   def show
-    @vm = Instance.find(params[:id])
-    @ec2 = VirtualMachineService.get('i-70e5d0b4')
+    @instance = Instance.find(params[:id])
+    @vm = VirtualMachineService.get(@instance.instance_id)
   end
 
   def new
@@ -14,10 +13,17 @@ class InstancesController < ApplicationController
   end
 
   def create
-    CreateInstanceWorker.perform_async("name1")
+    #binding.pry
+    #@instance = Instance.create(instance_params.merge(:instance_id => "ididid"))
     @instance = Instance.new(instance_params)    
     if @instance.valid?
-      flash[:positive] = "Instance has been created (waiting for server to respond"
+
+         #server = Fog::Compute[:aws].servers.create(image_id: "ami-f0091d91", name: params[:name], flavor_id:"t2.micro")
+         #server.wait_for { ready? }
+         #@instance.instance_id = server.id
+         #@instance.save   
+      CreateInstanceWorker.perform_async(params[:instance][:name])
+      flash[:positive] = "Instance has been created (waiting for server to respond) #{params[:instance][:name]}"
       redirect_to instances_path
 
     else
@@ -27,7 +33,7 @@ class InstancesController < ApplicationController
 
   private
     def instance_params
-      params.require(:instance).permit(:name)
+      params.require(:instance).permit(:name, :instance_id)
     end
 
 end
