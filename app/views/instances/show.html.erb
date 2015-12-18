@@ -1,16 +1,61 @@
 <div class="ui segment container">
-  <h1 class="ui center aligned header"><%= @instance.name %></h1>
-
-<h2>id: <%= @instance.instance_id %></h2>
-<%= @server.state %>
-<%= @instance.public_ip %>
-<%= @instance.availability_zone %>
-<%= @instance.flavor_id %>
-<%= @instance.dns_name %>
-<% if %w(running pending).include? @server.state  %>
-<%= link_to "Stop instance", action_instance_path(@instance, instance_action: "stop"), method: :post %>
-<% else %>
-  <%= link_to "Start instance", action_instance_path(@instance, instance_action: "start"), method: :post %>
-<% end %>
+<div class="ui three column divided grid">
+  <div class="row">
+    <div class="column">
+      <%= link_to("Back", instances_path , class: "ui green button") %>
+    </div>
+    <div class="column">
+      <h1 class="ui center aligned header"><%= @instance.name %></h1>
+    </div>
+    <div class="column">
+      <h4>Status: <%= @server.state %>
+        <% dis = "" %>
+        <% if %(pending stopping shutting-down rebooting).include? @server.state 
+          dis = "disabled" 
+        end %>
+        <% if %w(running  pending).include? @server.state %>
+          <%= link_to "Stop instance", action_instance_path(@instance, instance_action: "stop"), method: :post, class: "ui red right button #{dis}" %>
+        <% else %>
+          <%= link_to "Start instance", action_instance_path(@instance, instance_action: "start"), method: :post, class: "ui green right button #{dis}" %>
+        <% end %>
+      </div>
+    </h4>
+  </div>
+  
+</div>
+  <table class="ui celled padded table">
+  <thead>
+    <tr>
+    <th>Instance ID</th>
+    <th>Image ID</th>
+    <th >Flavor ID</th>
+    <th>Public ip</th>
+    <th>DNS name</th>
+    <th>Zone</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= @instance.instance_id %>
+      </td>
+      <td class="single line">
+        <%= @instance.image_id %>
+      </td>
+      <td>
+        <%= @instance.flavor_id %>
+      </td>
+      <td>
+        <%= @instance.public_ip %>
+      </td>
+      <td>
+        <%= @instance.dns_name %>
+      </td>
+      <td>
+        <%= @instance.availability_zone %>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 

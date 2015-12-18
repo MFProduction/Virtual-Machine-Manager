@@ -8,9 +8,9 @@
           <%= f.text_field :name  %>
           <div class="field">
           <%= f.label "Preset"  %>
-          <%= collection_select(:instance, :preset_id, Preset.all, :id, :name) %>
+          <%= collection_select(:instance, :preset_id, Preset.all, :id, :name, class: "ui dropdown") %>
         </div>
-        <%= f.submit(@instance.new_record? ? "Create" : "Edit", class:"ui green button")  %>
+        <%= f.submit(@instance.new_record? ? "Create" : "Edit", class: "ui green button")  %>
       <% end  %>
       </div>
 </div>
