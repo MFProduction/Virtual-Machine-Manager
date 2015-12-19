@@ -1,2 +1,35 @@
-<h1>Presets#index</h1>
-<p>Find me in app/views/presets/index.html.erb</p>
+<div class="ui segment container">
+  <div class="ui three column divided grid">
+    <div class="row">
+      <div class="column">
+        <%= link_to("New preset", new_preset_path , class:"ui green button") %>
+      </div>
+      <div class="column">
+        <h1 class="ui center center aligned header">Presets</h1>
+      </div>
+      <div class="column">
+        </div>
+      </h4>
+    </div>
+  <div class="ui attached segment">
+
+  <% @presets.each do |preset| %>
+    <div class="ui segment  container">
+      <div class="ui three column divided grid">
+        <div class="row">
+          <div class="column">
+            <h2><%= preset.name %></h2> 
+          </div>
+        <div class="column">
+          <p>Image ID - <%= preset.image_id %></p>
+          <p>Flavor ID - <%= preset.flavor_id %></p>
+        </div>
+        <div class="column">
+          <div class="ui negative button">Delete</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>

@@ -1,16 +1,35 @@
-  <div class="ui container ">
-    <h1 class="ui center aligned attached header ">Create new Virtual Machine</h1>
-    <div class="ui segment attached">
-      <%= render "layouts/errors", obj: @instance %>
-      <%= form_for (@instance), html: { class: "ui form"}  do |f| %>
-        <div class="field">
-          <%= f.label :name  %>
-          <%= f.text_field :name  %>
-          <div class="field">
-          <%= f.label "Preset"  %>
-          <%= collection_select(:instance, :preset_id, Preset.all, :id, :name, class: "ui dropdown") %>
-        </div>
-        <%= f.submit(@instance.new_record? ? "Create" : "Edit", class: "ui green button")  %>
-      <% end  %>
+<div class="ui segment container">
+  <div class="ui three column divided grid">
+    <div class="row">
+      <div class="column">
+        <%= link_to("back", instances_path , class:"ui green button") %>
       </div>
+      <div class="column">
+        <h1 class="ui center center aligned header">Create new virtual Machine</h1>
+      </div>
+      <div class="column">
+      </div>
+    </div>
+  </div>
+  
+    <%= render "layouts/errors", obj: @instance %>
+    <%= form_for (@instance), html: { class: "ui form"}  do |f| %>
+      <div class="field">
+        <%= f.label :name  %>
+        <%= f.text_field :name  %>
+      </div>
+      <div class="field">
+        <%= f.label :company  %>
+        <%= f.text_field :company  %>
+      </div>
+      <div class="field">
+        <%= f.label :description  %>
+        <%= f.text_area :description  %>
+      </div>
+        <div class="field">
+        <%= f.label "Preset"  %>
+        <%= collection_select(:instance, :preset_id, Preset.all, :id, :name, class: "ui dropdown") %>
+      </div>
+      <%= f.submit("Create", class: "ui green button")  %>
+    <% end  %>
 </div>

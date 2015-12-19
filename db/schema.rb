@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20151217143202) do
     t.string   "public_ip"
     t.string   "availability_zone"
     t.string   "private_dns_name"
-    t.string   "dns_name"
+    t.string   "<d></d>ns_name"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "preset_id"

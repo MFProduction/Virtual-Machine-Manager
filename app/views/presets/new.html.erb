@@ -1,2 +1,27 @@
-<h1>Presets#new</h1>
-<p>Find me in app/views/presets/new.html.erb</p>
+<div class="ui segment container">
+  <div class="ui three column divided grid">
+    <div class="row">
+      <div class="column">
+        <%= link_to("back", presets_path , class:"ui green button") %>
+      </div>
+      <div class="column">
+        <h1 class="ui center center aligned header">Create new Preset</h1>
+      </div>
+      <div class="column">
+      </div>
+    </div>
+  </div>
+    <%= render "layouts/errors", obj: @preset %>
+    <%= form_for (@preset), html: { class: "ui form"}  do |f| %>
+      <div class="field">
+        <%= f.label :name  %>
+        <%= f.text_field :name  %>
+        <div class="field">
+        <%= f.label :image_id  %>
+        <%= f.text_field :image_id  %>
+        <%= f.label :flavor_id  %>
+        <%= f.text_field :flavor_id  %>
+      </div>
+      <%= f.submit("Create", class: "ui green button")  %>
+    <% end  %>
+</div>

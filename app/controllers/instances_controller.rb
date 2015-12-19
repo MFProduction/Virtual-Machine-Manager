@@ -23,7 +23,7 @@ class InstancesController < ApplicationController
     if @instance.valid?
       name = params[:instance][:name]
       preset_id = params[:instance][:preset_id]
-      CreateInstanceWorker.perform_async(name, preset_id)
+      CreateInstanceWorker.perform_async(params[:instance])
       flash[:positive] = "#{name} is being processed"
       redirect_to instances_path
 
@@ -36,19 +36,17 @@ class InstancesController < ApplicationController
     instance = Instance.find(params[:id])
     action = params[:instance_action]
     if action == "start"  
-      flash[:positive] = "#{instance.name} is starting"
       InstanceService.start(instance.id)
       redirect_to :back
     else
       InstanceService.stop(instance.id)
-      flash[:negative] = "#{instance.name} is stoping"
       redirect_to :back
     end
   end
 
   private
     def instance_params
-      params.require(:instance).permit(:name, :preset_id)
+      params.require(:instance).permit(:name, :preset_id, :company, :description)
     end
 
 end
