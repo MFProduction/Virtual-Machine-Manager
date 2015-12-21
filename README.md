@@ -11,7 +11,15 @@ git clone https://github.com/MrStaind/Virtual-Machine-Manager
 ```bash
 bundle install 
 ```
-* create postgresql database and set it  in config/database.yml
+* create postgresql database/username and set it  in config/database.yml
+```bash
+rake db:create
+rake db:migrate 
+```
+* if you want example presets
+```bash
+rake db:seed
+```
 * copy .fog example to .fog in home directory and paste in your credentials from AWS (access key id, secret access id and default region )
 ```bash
 cp .fog-example ~/.fog 
