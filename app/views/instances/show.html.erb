@@ -14,9 +14,9 @@
             dis = "disabled" 
           end %>
           <% if %w(running  pending).include? @server.state %>
-            <%= link_to "Stop instance", action_instance_path(@instance, instance_action: "stop"), method: :post, class: "ui red right button #{dis}" %>
+            <%= link_to "Stop instance", stop_instance_path(@instance), method: :post, class: "ui red right button #{dis}" %>
           <% else %>
-            <%= link_to "Start instance", action_instance_path(@instance, instance_action: "start"), method: :post, class: "ui green right button #{dis}" %>
+            <%= link_to "Start instance", start_instance_path(@instance), method: :post, class: "ui green right button #{dis}" %>
           <% end %>
         </div>
       </h4>

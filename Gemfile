@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'fog'
-gem 'fog-aws'
+#gem 'fog-aws'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'sidekiq'
 gem 'sinatra', require: false
@@ -23,21 +23,15 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem "better_errors"
-  # gem 'capybara'
-  # gem 'factory_girl_rails'
-  # gem 'ffaker'
-
 
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'  
   gem 'spring'
 
-
+end
 group :test do
   gem 'minitest'
   gem 'shoulda-matchers', '2.5.0'
-end
 end

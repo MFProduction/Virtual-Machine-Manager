@@ -9,15 +9,12 @@ class PresetsController < ApplicationController
 
   def create
     @preset = Preset.new(preset_params)
-
     if @preset.save
-      flash[:positive] = "#{params[:name]} was created"
+      flash[:positive] = "#{params[:name]} preset was created"
       redirect_to presets_path
-
     else
       render :new
     end
-  
   end
 
   private
