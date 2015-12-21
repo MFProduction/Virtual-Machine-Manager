@@ -1,7 +1,7 @@
 # Virtual Machine Manager
 Virtual machine manager in Ruby on Rails application for creating and monitoring AWS EC2 instances
 
-## Installation
+## Installation in development
 
 *  Clone this repository:
 ```bash
@@ -11,12 +11,12 @@ git clone https://github.com/MrStaind/Virtual-Machine-Manager
 ```bash
 bundle install 
 ```
-* create postgresql database/username and set it  in config/database.yml
+* create postgresql username and set it  in config/database.yml
 ```bash
 rake db:create
 rake db:migrate 
 ```
-* if you want example presets
+* if you want example presets run:
 ```bash
 rake db:seed
 ```
@@ -24,6 +24,14 @@ rake db:seed
 ```bash
 cp .fog-example ~/.fog 
 ```
+Start rails server, redis server and sidekiq
+```bash
+rails s
+redis-server
+sidekiq
+```
+
+
 ## Libraries
 * Ruby on Rails
 * Redis
@@ -31,3 +39,4 @@ cp .fog-example ~/.fog
 * fog gem
 * sidekiq gem
 * semantic-ui
+
