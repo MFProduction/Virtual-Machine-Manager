@@ -8,7 +8,7 @@ class CreateInstanceWorker
     server.wait_for { ready? }
     
 
-    instance = Instance.new_with_server_and_params(params, server)
+    instance = Instancee.new_with_server_and_params(params, server)
     if instance.save    
       logger.info "#{params["name"]} was saved to db"
     else
