@@ -1,5 +1,5 @@
 # Virtual Machine Manager
-Virtual machine manager in Ruby on Rails application for creating and monitoring AWS EC2 instances
+Virtual machine manager is Ruby on Rails application for creating and monitoring AWS EC2 instances
 
 ## Installation in development
 
