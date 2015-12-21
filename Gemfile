@@ -9,7 +9,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'fog'
-#gem 'fog-aws'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'sidekiq'
 gem 'sinatra', require: false
